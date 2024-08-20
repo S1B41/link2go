@@ -2,12 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:server": "nodemon index.js --ignore 'client/'",
-    "start:client": "npm run serve --prefix '../client/'"
+    "dev:server": "nodemon index.js --ignore 'client/'",
+    "dev:client": "npm run dev --prefix ../client/",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
   },
-  "type": "module",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -18,5 +19,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.5.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
