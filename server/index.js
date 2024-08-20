@@ -9,6 +9,10 @@ dotenv.config();
 
 app.use(cors()) // to allow cross origin requests
 app.use(bodyParser.json()) // to convert the request into JSON
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/xwww-
+app.get("/", (req, res) => {
+    res.send("Hello");
+  });
 
 mongoose
     .connect(process.env.MONGO_URI, {
