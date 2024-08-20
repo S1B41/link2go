@@ -6,7 +6,6 @@ import bodyParser from "body-parser";
 
 const app = express();
 dotenv.config();
-//const { PORT, mongoUri } = require('./config')
 
 app.use(cors()) // to allow cross origin requests
 app.use(bodyParser.json()) // to convert the request into JSON
