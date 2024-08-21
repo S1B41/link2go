@@ -1,5 +1,5 @@
 import validate from "validate.js";
-import { generate } from "shortid";
+import { nanoid } from "nanoid";
 
 const validateUrl = (url = "") => {
     return validate({ website: url }, {
@@ -10,6 +10,6 @@ const validateUrl = (url = "") => {
         }
     });
 }
-const generateUrlKey = () => generate();
+const generateUrlKey = () => nanoid(10);
 
-export default { validateUrl, generateUrlKey: generateUrlKey };
+export { validateUrl, generateUrlKey };
