@@ -39,7 +39,7 @@
               <button
                 v-else
                 class="btn btn-primary"
-                @click.prevent="shortenAnother"
+                @click.prevent="shortenAnotherUrl"
               >
                 Shorten Another URL
               </button>
@@ -82,6 +82,10 @@ export default {
         .catch(function (err) {
           console.error("Could not copy text: ", err)
         })
+    },
+    shortenAnotherUrl() {
+      this.shortUrl = ""
+      this.url = ""
     },
   },
 }
