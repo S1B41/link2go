@@ -17,13 +17,14 @@
                 type="url"
                 class="form-control"
                 v-model="url"
-                style="height: 150px"
+                style="width: 100%; height: 150px"
               />
             </div>
             <div class="for-group" v-show="shortUrl">
               <p>
                 Short URL:
                 <a :href="shortUrl" class="text-primary">{{ shortUrl }}</a>
+                <br />
                 <button @click.prevent="copyToCB">Copy</button>
               </p>
             </div>
