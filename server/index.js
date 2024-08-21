@@ -3,8 +3,11 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
+import {validateUrl, generateUrlKey} from "./services/urlService.js";
+import urlController from "./controllers/urlController";
 
 const app = express();
+const host = 'link2go.cc'
 dotenv.config();
 
 app.use(cors()) // to allow cross origin requests
@@ -13,6 +16,19 @@ app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x
 app.get("/", (req, res) => {
     res.send("Hello");
   });
+
+app.post("/url", async (req, res) => {
+    try {
+        if (!!validateUrl(req.body.url))
+            return res.status(400).send({ msg: "Invalid URL." });
+        const urlKey = generateUrlKey();
+        const shortUrl = `https://${host}/${urlKey}`
+        await urlController.save(req.body.url, shortUrl, urlKey)
+        return res.status(200).send({ shortUrl });
+    } catch (error) {
+        return res.status(500).send({ msg: "Error. Please try again." });
+    }
+}); 
 
 mongoose
     .connect(process.env.MONGO_URI, {
