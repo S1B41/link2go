@@ -1,7 +1,7 @@
-import { create, findOne } from "../models/Url";
+import URL from "../models/url.js"
 
 const save = (longURL, shortURL, shortUrlId) => {
-    create({ longURL, shortURL, shortUrlId })
+    URL.create({ longURL, shortURL, shortUrlId })
 };
 const find = (shortUrlId) => findOne({ shortUrlId: shortUrlId });
 
