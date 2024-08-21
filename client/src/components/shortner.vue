@@ -22,7 +22,7 @@
             </div>
             <div class="for-group" v-show="shortUrl">
               <p>
-                Short URL: :
+                Short URL:
                 <a :href="shortUrl" class="text-primary">{{ shortUrl }}</a>
                 <button @click.prevent="copyToCB">Copy</button>
               </p>
@@ -60,12 +60,15 @@ export default {
       }
     },
     copyToCB: async function () {
-      navigator.clipboard.writeText(this.shortUrl).then(function() {
-        alert('Text copied to clipboard!');
-    }).catch(function(err) {
-        console.error('Could not copy text: ', err);
-    });
-    }
+      navigator.clipboard
+        .writeText(this.shortUrl)
+        .then(function () {
+          alert("Text copied to clipboard!")
+        })
+        .catch(function (err) {
+          console.error("Could not copy text: ", err)
+        })
+    },
   },
 }
 </script>
