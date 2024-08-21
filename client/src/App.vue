@@ -1,11 +1,11 @@
 <script>
-import Home from "./components/home.vue";
+import Home from "./components/home.vue"
 export default {
   name: "App",
   components: {
     Home,
   },
-};
+}
 </script>
 
 <template>
@@ -14,7 +14,7 @@ export default {
       <a class="navbar-brand" href="#">Link2Go</a>
     </nav>
     <div class="container">
-     <home />
+      <home />
     </div>
   </div>
 </template>
