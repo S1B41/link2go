@@ -1,9 +1,9 @@
 <script>
-import Home from "./components/home.vue"
+import Shortner from "./components/shortner.vue"
 export default {
   name: "App",
   components: {
-    Home,
+    Shortner,
   },
 }
 </script>
@@ -14,7 +14,7 @@ export default {
       <a class="navbar-brand" href="#">Link2Go</a>
     </nav>
     <div class="container">
-      <home />
+      <shortner />
     </div>
   </div>
 </template>
