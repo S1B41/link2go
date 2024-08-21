@@ -29,7 +29,20 @@
               </p>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">Shorten URL</button>
+              <button
+                v-if="!this.shortUrl"
+                class="btn btn-primary"
+                type="submit"
+              >
+                Shorten URL
+              </button>
+              <button
+                v-else
+                class="btn btn-primary"
+                @click.prevent="shortenAnother"
+              >
+                Shorten Another URL
+              </button>
             </div>
           </form>
         </div>
