@@ -24,10 +24,11 @@
               <p>
                 Short URL: :
                 <a :href="shortUrl" class="text-primary">{{ shortUrl }}</a>
+                <button @click.prevent="copyToCB">Copy</button>
               </p>
             </div>
             <div class="form-group">
-              <button class="btn btn-primary" type="submit">Shorten URl</button>
+              <button class="btn btn-primary" type="submit">Shorten URL</button>
             </div>
           </form>
         </div>
@@ -38,6 +39,7 @@
 
 <script>
 import axios from "axios"
+
 export default {
   data: () => {
     return {
@@ -57,6 +59,13 @@ export default {
         console.log(error)
       }
     },
+    copyToCB: async function () {
+      navigator.clipboard.writeText(this.shortUrl).then(function() {
+        alert('Text copied to clipboard!');
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+    });
+    }
   },
 }
 </script>
