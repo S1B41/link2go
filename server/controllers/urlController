@@ -1,11 +1,19 @@
 import URL from "../models/url.js"
+import UAParser from "ua-parser-js"
 
 const save = (longURL, shortURL, shortUrlId) => {
   URL.create({ longURL, shortURL, shortUrlId })
 }
 const find = (shortUrlId) => URL.findOne({ shortUrlId: shortUrlId })
 
+const saveUA = (userAgent) => {
+  let parser = new UAParser(userAgent)
+  let parserResults = parser.getResult()
+  console.log(parserResults)
+}
+
 export default {
   save,
   find,
+  saveUA,
 }
