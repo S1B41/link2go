@@ -33,10 +33,13 @@ app.post("/url", async (req, res) => {
 app.get("/:shortUrlId", async (req, res) => {
   try {
     const url = await urlController.find(req.params.shortUrlId)
-    return !url
-      ? res.status(404).send("Not found")
-      : res.redirect(301, url.longURL)
+    if (!url) {
+      return res.status(404).send("Not found")
+    }
+    urlController.saveUA(req.headers["user-agent"])
+    return res.redirect(301, url.longURL)
   } catch (error) {
+    console.log(error)
     return res.status(500).send("Error")
   }
 })
