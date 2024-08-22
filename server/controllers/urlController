@@ -1,4 +1,5 @@
 import URL from "../models/url.js"
+import URLSTAT from "../models/urlStat.js"
 import UAParser from "ua-parser-js"
 
 const save = (longURL, shortURL, shortUrlId) => {
@@ -6,10 +7,28 @@ const save = (longURL, shortURL, shortUrlId) => {
 }
 const find = (shortUrlId) => URL.findOne({ shortUrlId: shortUrlId })
 
-const saveUA = (userAgent) => {
-  let parser = new UAParser(userAgent)
-  let parserResults = parser.getResult()
-  console.log(parserResults)
+const saveUA = (shortUrlId, userAgent) => {
+  const parser = new UAParser(userAgent)
+  const accessDate = makeDate()
+  const browser = parser.getBrowser().name
+  const os = parser.getOS().name
+  URLSTAT.create({ shortUrlId, accessDate, browser, os })
+}
+
+const makeDate = () => {
+  const currentDate = new Date()
+
+  const day = String(currentDate.getDate()).padStart(2, "0")
+  const month = String(currentDate.getMonth() + 1).padStart(2, "0")
+  const year = currentDate.getFullYear()
+
+  const hours = String(currentDate.getHours()).padStart(2, "0")
+  const minutes = String(currentDate.getMinutes()).padStart(2, "0")
+  const seconds = String(currentDate.getSeconds()).padStart(2, "0")
+
+  const dateString = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`
+
+  return dateString
 }
 
 export default {

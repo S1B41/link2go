@@ -36,7 +36,7 @@ app.get("/:shortUrlId", async (req, res) => {
     if (!url) {
       return res.status(404).send("Not found")
     }
-    urlController.saveUA(req.headers["user-agent"])
+    urlController.saveUA(req.params.shortUrlId, req.headers["user-agent"])
     return res.redirect(301, url.longURL)
   } catch (error) {
     console.log(error)
