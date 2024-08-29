@@ -2,8 +2,8 @@ import URL from "../models/url.js"
 import URLSTAT from "../models/urlStat.js"
 import UAParser from "ua-parser-js"
 
-const save = (longURL, shortURL, shortUrlId) => {
-  URL.create({ longURL, shortURL, shortUrlId })
+const save = (longURL, shortURL, shortUrlId, uuid) => {
+  URL.create({ longURL, shortURL, shortUrlId, uuid })
 }
 const find = (shortUrlId) => URL.findOne({ shortUrlId: shortUrlId })
 

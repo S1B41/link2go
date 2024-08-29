@@ -14,6 +14,11 @@ const urlSchema = new Schema({
     required: true,
     unique: true,
   },
+  uuid: {
+    type: String,
+    required: true,
+    unique: true,
+  },
 })
 
 export default model("URL", urlSchema)

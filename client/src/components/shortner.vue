@@ -65,8 +65,11 @@ export default {
     submit: async function (url) {
       try {
         const api = "http://localhost:3000/url"
+        const uuid = crypto.randomUUID()
+        this.$cookies.set("l2g-uuid", uuid, "30d")
         const response = await axios.post(api, {
           url,
+          uuid,
         })
         this.shortUrl = response.data.shortUrl
       } catch (error) {

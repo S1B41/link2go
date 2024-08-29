@@ -23,7 +23,7 @@ app.post("/url", async (req, res) => {
       return res.status(400).send({ msg: "Invalid URL." })
     const urlKey = generateUrlKey()
     const shortUrl = `http://${host}/${urlKey}`
-    await urlController.save(req.body.url, shortUrl, urlKey)
+    await urlController.save(req.body.url, shortUrl, urlKey, req.body.uuid)
     return res.status(200).send({ shortUrl })
   } catch (error) {
     return res.status(500).send({ msg: "Error. Please try again." })
