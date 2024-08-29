@@ -21,7 +21,8 @@
     "mongoose": "^8.5.3",
     "nanoid": "^5.0.7",
     "ua-parser-js": "^1.0.38",
-    "validate.js": "^0.13.1"
+    "validate.js": "^0.13.1",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
